@@ -1,5 +1,5 @@
-import os
+import subprocess
 import sys
 
-os.startfile("tgramer_source/update")
+subprocess.run("tgramer_source/update")
 sys.exit(0)
