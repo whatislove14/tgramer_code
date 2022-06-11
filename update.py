@@ -12,7 +12,7 @@ class Load_Window(QDialog):
         QDialog.__init__(self)
         self.setFixedSize(500, 250)
         fontId = QFontDatabase.addApplicationFont(
-            "tgramer_source\\fs-gravity.ttf")
+            "tgramer_source/fs-gravity.ttf")
         self.fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
         self.title = QLabel("TGRAMER", self)
@@ -48,7 +48,7 @@ secret = 'kD9aB4kT2ncH'
 port = 22
 
 app = QtWidgets.QApplication(sys.argv)
-app.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+app.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
 LoadWin = Load_Window()
 app.processEvents()
 
@@ -68,11 +68,11 @@ try:
     transport.connect(username=user, password=secret)
     sftp = paramiko.SFTPClient.from_transport(transport)
     remotepath = 'tgramer/version'
-    localpath = 'tgramer_source\\update_log\\last version'
+    localpath = 'tgramer_source/update_log/last version'
     sftp.get(remotepath, localpath)
 
-    my_vers = open('tgramer_source\\update_log\\version', encoding='utf-8').read()
-    last_vers = open('tgramer_source\\update_log\\last version',
+    my_vers = open('tgramer_source/update_log/version', encoding='utf-8').read()
+    last_vers = open('tgramer_source/update_log/last version',
                     encoding='utf-8').read()
 
     if my_vers != last_vers:
@@ -80,10 +80,10 @@ try:
         LoadWin.set_info_title("Обновляем программу...")
         app.processEvents()
         remotepath = 'tgramer/update text'
-        localpath = 'tgramer_source\\update_log\\update text'
+        localpath = 'tgramer_source/update_log/update text'
         sftp.get(remotepath, localpath)
         get_r_portable(sftp, "tgramer", "tgramer_source")
-        with open('tgramer_source\\update_log\\version', "w", encoding='utf-8') as f:
+        with open('tgramer_source/update_log/version', "w", encoding='utf-8') as f:
             f.write(last_vers)
 except:
     LoadWin.set_info_title("Ошибка обновления")
@@ -92,7 +92,7 @@ except:
 LoadWin.set_info_title("Запуск программы...")
 app.processEvents()
 sleep(1)
-os.startfile('tgramer_source\\gui.exe')
+os.startfile('tgramer_source/gui')
 # LoadWin.close()
 # app.exec_()
 # sys.exit()
