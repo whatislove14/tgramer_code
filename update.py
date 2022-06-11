@@ -67,7 +67,7 @@ try:
     transport = paramiko.Transport((host, port))
     transport.connect(username=user, password=secret)
     sftp = paramiko.SFTPClient.from_transport(transport)
-    remotepath = 'tgramer/version'
+    remotepath = 'tgramer_linux/version'
     localpath = 'tgramer_source/update_log/last version'
     sftp.get(remotepath, localpath)
 
@@ -79,7 +79,7 @@ try:
         print("Обновляем программу...")
         LoadWin.set_info_title("Обновляем программу...")
         app.processEvents()
-        remotepath = 'tgramer/update text'
+        remotepath = 'tgramer_linux/update text'
         localpath = 'tgramer_source/update_log/update text'
         sftp.get(remotepath, localpath)
         get_r_portable(sftp, "tgramer", "tgramer_source")
