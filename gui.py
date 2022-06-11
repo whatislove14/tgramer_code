@@ -313,7 +313,7 @@ class MainWindow(QMainWindow):
             lambda x: self.enter_code_dialog_mail(x[0], x[1], x[2]))
 
         fontId = QFontDatabase.addApplicationFont(
-            "tgramer_source\\fs-gravity.ttf")
+            "tgramer_source/fs-gravity.ttf")
         self.fontName = QFontDatabase.applicationFontFamilies(fontId)[0]
 
         self.back_but = QPushButton(self)
@@ -398,7 +398,7 @@ class MainWindow(QMainWindow):
         self.pars_but.hide()
 
         self.pars_pic = PicClick(self)
-        self.pars_pic.setPixmap(QPixmap('tgramer_source\\pars.png'))
+        self.pars_pic.setPixmap(QPixmap('tgramer_source/pars.png'))
         self.pars_pic.resize(110, 145)
         self.pars_pic.move(165, 199)
         self.pars_pic.clicked.connect(self.pars_window)
@@ -430,7 +430,7 @@ class MainWindow(QMainWindow):
         self.inv_but.hide()
 
         self.inv_pic = PicClick(self)
-        self.inv_pic.setPixmap(QPixmap('tgramer_source\\inv.png'))
+        self.inv_pic.setPixmap(QPixmap('tgramer_source/inv.png'))
         self.inv_pic.resize(150, 150)
         self.inv_pic.move(500, 199)
         self.inv_pic.clicked.connect(self.inv_window)
@@ -461,7 +461,7 @@ class MainWindow(QMainWindow):
         self.mail_but.hide()
 
         self.mail_pic = PicClick(self)
-        self.mail_pic.setPixmap(QPixmap('tgramer_source\\mail.png'))
+        self.mail_pic.setPixmap(QPixmap('tgramer_source/mail.png'))
         self.mail_pic.clicked.connect(self.mail_window)
         self.mail_pic.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.mail_pic.resize(150, 150)
@@ -879,7 +879,7 @@ class MainWindow(QMainWindow):
         self.wind_title.move(370, 50)
         self.wind_title.hide()
 
-        with open("tgramer_source\\update_log\\update text", "r", encoding='utf-8') as f:
+        with open("tgramer_source/update_log/update text", "r", encoding='utf-8') as f:
             i = 0
             self.update_text = ""
             self.fl_stop = False
@@ -892,8 +892,8 @@ class MainWindow(QMainWindow):
                     continue
                 self.update_text += line
             self.now_version = open(
-                "tgramer_source\\update_log\\last version").read()
-        with open("tgramer_source\\update_log\\update text", "w", encoding='utf-8') as f:
+                "tgramer_source/update_log/last version").read()
+        with open("tgramer_source/update_log/update text", "w", encoding='utf-8') as f:
             f.write("0\n"+self.update_text)
 
         self.main_start()
@@ -1125,14 +1125,14 @@ class MainWindow(QMainWindow):
         app.processEvents()
 
     def get_file(self):
-        self.file_to_send = QFileDialog.getOpenFileName(self, "Выберите картинку для отправки", ".\\")[0]
+        self.file_to_send = QFileDialog.getOpenFileName(self, "Выберите картинку для отправки", "./")[0]
         print(self.file_to_send)
 
     def view_instruction(self):
         dialog = QDialog(self)
         dialog.setWindowTitle("Инструкция")
 
-        txt = open("tgramer_source\\insrt.txt", encoding="utf-8").read()
+        txt = open("tgramer_source/insrt.txt", encoding="utf-8").read()
         label = ScrollLabel(dialog)
  
         # setting text to the label
@@ -1149,10 +1149,10 @@ if __name__ == "__main__":
     approve = auth()
     if not approve and key:
         app2 = QtWidgets.QApplication(sys.argv)
-        app2.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+        app2.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
         while not approve:
             dialog = EnterCodeDialog()
-            dialog.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+            dialog.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
             dialog.setWindowTitle("Активация программы")
             dialog.show()
             app2.exec_()
@@ -1160,10 +1160,10 @@ if __name__ == "__main__":
             approve = auth()
     elif not approve and not key:
         app2 = QtWidgets.QApplication(sys.argv)
-        app2.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+        app2.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
         while not approve:
             dialog = EnterCodeDialog()
-            dialog.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+            dialog.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
             dialog.setWindowTitle("Активация программы")
             dialog.wrong_label.hide()
             dialog.show()
@@ -1172,8 +1172,8 @@ if __name__ == "__main__":
             approve = auth()
     if approve:
         app = QtWidgets.QApplication(sys.argv)
-        app.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+        app.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
         mw = MainWindow()
-        mw.setWindowIcon(QtGui.QIcon('tgramer_source\\tg.ico'))
+        mw.setWindowIcon(QtGui.QIcon('tgramer_source/tg.ico'))
         mw.show()
         sys.exit(app.exec_())

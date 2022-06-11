@@ -140,7 +140,7 @@ class Parser:
                 all_users.append([participant.id, participant.username, participant.first_name, participant.last_name, participant.phone])  
         self.window.process_load_file()
         data = pd.DataFrame(all_users, columns=["telegram id", "username", "first name", "last name", "phone"])
-        data.to_excel("result\\{}.xlsx".format(self.chat.username))
+        data.to_excel("result/{}.xlsx".format(self.chat.username))
         self.window.end_parsing()
         self.client.disconnect()
 
